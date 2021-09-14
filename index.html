@@ -1,1 +1,89 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href ="assets/css/style.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row navbar navbar-dark bg-dark">
+            <div class="col-12 text-center">
+                <h1 class="navbar-brand">Weather Dashboard</h1>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-3 bg-light pt-3">
+                <h4>Search for a city:</h4>
+                <form>
+                    <div class="form-group input-group">
+                        <input type="text" class="form-control" id="search" placeholder="CITY">
+                        
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-info col-12" type="button" id="search-button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="card">
+                    <ul class="list-group list-group-flush" id="search-list">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12 border">
+                        <h2>City Information</h2>
+                        <p>Temp:</p>
+                        <p>Wind:</p>
+                        <p>Humidity:</p>
+                        <p>UV Index</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>5-Day Forecast</h3>
+                    </div>
+                    <div class="col-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Date</h5>
+                                <i class="fa fa-sun"></i>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Wind:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--NEED TO USE A DIFF LIBRARY THEN MOMENT.JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
