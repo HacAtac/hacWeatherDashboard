@@ -6,3 +6,21 @@
 * {
     padding: 5px;
 }
+
+.uvfavorable {
+    background-color: #179717e0;
+}
+
+.uvmoderate {
+    background-color: #c9e648e0;
+}
+
+.uvsevere {
+    background-color: #f05710e0;
+}
+
+.list-group-item {
+    background-color: grey;
+    margin-top: 10px;
+    font: bold;
+}

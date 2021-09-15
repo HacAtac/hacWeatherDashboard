@@ -8,7 +8,7 @@ document.getElementById("#search-list");
 
 
 // Need to make a function that will show current conditions 
-// Will show conditions, temp, humidity, wind, UV index, also need font awesome icon for current condition
+// Will show conditions, temp, humidity, wind, UV index, also need color for  current UV 
 // Current Condition UV index should show favorable, moderate, or severe color
 function currentConditions(city) {
     var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
@@ -30,14 +30,27 @@ function currentConditions(city) {
         <p>Wind: ${cityResponse.wind.speed}MPH</p>
             `);
     $("#cityInfo").append(currentCity);
+        //HEAT INDEX
+        var lat = cityResponse.coord.lat;
+        var lon = cityResponse.coord.lon;
+        var uviURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+        $.ajax({
+            url: uviURL,
+            method:"GET"
+        }).then(function(uviResponse){
+            console.log(uviResponse);
         
+        var heatIndex = uviResponse.value;
+        var heatIndexP = $(`<p>Heat Index: <span id ="heatIndexColor" class="px-4 py-4 square">${heatIndex}</span></p>`);
+        $("#cityInfo").append(heatIndexP);
+        })
+
     })
 
 }
 
 // And also it adds to the search history NEED THE SEARCHES TO DISPLAY ON PAGE
-
-
 
 // Need to make a function that will show next conditions within 5 days
 // Will need to show conditions, temp, humidity, wind, UV index for the next 5 days.
@@ -52,9 +65,10 @@ $("#search-button").on("click", function(event) {
     currentConditions(city);
     if (!citySearchList.includes(city)) {
         citySearchList.push(city);
-        var cityInput = $(` <li class = "list-group-item">${city}</li>`);
-        $("#search").append(cityInput);
+        var cityInput = $(` <li class = "list-group-item" "row" "background">${city}</li>`);
+        $("#search-list").append(cityInput);
     };
+    
     localStorage.setItem("searched-city", JSON.stringify(citySearchList));
     console.log(citySearchList);
 })
