@@ -5,6 +5,7 @@ var today = moment().format('l');
 document.getElementById("#search-list");
 //will store searched cities in this.
 var citySearchList;
+//getting local storage so that I can append back to page after refresh
 if (JSON.parse(localStorage.getItem("searched-city"))) {
     citySearchList= JSON.parse(localStorage.getItem("searched-city"))
 }else {
@@ -57,6 +58,7 @@ function currentConditions(city) {
         var heatIndex = uviResponse.value;
         var heatIndexP = $(`<p>Heat Index: <span id ="heatIndexColor" class="px-4 py-4 square">${heatIndex}</span></p>`);
         // NOTE FOR MYSELF NEEDS TO APPEND B4 CONDITION SO THAT THE ID EXSISTS
+        // When you view the UV index needs to show a color regarding what condition it is
         $("#cityInfo").append(heatIndexP);
         if (heatIndex < 2) {
             $("#heatIndexColor").addClass("uvfavorable");
@@ -93,7 +95,7 @@ $("#search-list").on("click", "li", function(event) {
 
 // Need to make a function that will show next conditions within 5 days
 // Will need to show conditions, temp, humidity, wind for the next 5 days.
-// When you view the UV index needs to show a color regarding what condition it is
+
 function nextDaysCondition(lat, lon) {
 
     var nextDaysURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
